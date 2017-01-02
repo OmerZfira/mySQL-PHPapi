@@ -12,6 +12,33 @@ function getFlights() {
     return $flights;
 }
 
+function getFlightsByOrigin($origin) {
+    global $conn;
+    $sql = 'SELECT * FROM flight WHERE origin="'.$origin.'"';
+    $result = $conn->query($sql);
+        // dd($result);
+    while($flight = $result->fetch_object()) {
+        $flights[] = $flight;
+    }
+    return $flights;
+}
+function getFlightsByDest($dest) {
+    global $conn;
+    $sql = 'SELECT * FROM flight WHERE dest="'.$dest.'"';
+    $result = $conn->query($sql);
+      while($flight = $result->fetch_object()) {
+        $flights[] = $flight;
+    }
+    return $flights;
+}
+function getFlightsByOriginAndDest($origin, $dest) {
+    global $conn;
+    $sql = "SELECT * FROM flight WHERE origin=" .$origin. "AND dest=" .$dest ;
+    $result = $conn->query($sql);
+    $flight = $result->fetch_object();
+    return $flight;
+}
+
 function getFlightById($id) {
     global $conn;
     $sql = "SELECT * FROM flight WHERE id=".$id;
@@ -26,14 +53,15 @@ function deleteFlightById($id) {
     $result = $conn->query($sql);
 }
 
-function insertFlight($plane) {
+function insertFlight($flight) {
     global $conn;
     $newId = null;
     $sql = 'INSERT INTO flight (origin, dest, departure_at, plane_id) VALUES ' . 
-           ' ("' . $flight->origin . '", "' . $flight->dest .'", ' . $flight->departure_at .', ' . $flight->plane_id .')';
+           ' ("' . $flight->origin . '", "' . $flight->dest .'", "' . $flight->departure_at .'", ' . $flight->plane_id .')';
 
     if ($conn->query($sql) === TRUE) {
         // echo "New record created successfully";
+   dd($newId);
         $newId = $conn->insert_id;
     }
     return $newId;

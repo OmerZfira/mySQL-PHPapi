@@ -11,10 +11,18 @@ dbConnect();
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
      
      $idToGet = (int) r('id');
+     $originToGet = r('origin');
+     $destToGet = r('dest');
 
      if ($idToGet) {
         $flight = getFlightById($idToGet);
-        echo json_encode($flight);
+        // echo json_encode($flight);
+     } elseif ($originToGet) {
+        $flights = getFlightsByOrigin($originToGet);
+        echo json_encode($flights);
+     } elseif ($destToGet) {
+        $flights = getFlightsByDest($destToGet);
+        echo json_encode($flights);
      } else {
         $flights = getFlights();
         echo json_encode($flights);
@@ -37,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $entity = file_get_contents('php://input');
     $entity = json_decode($entity);
-   
     insertFlight($entity);
 }
 
