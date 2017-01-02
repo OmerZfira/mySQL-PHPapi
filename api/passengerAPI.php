@@ -1,6 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Methods:  POST, GET, PUT, DELETE');
+header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
 
 require_once '../util/util.php';
 require_once '../model/passenger.php';
