@@ -1,5 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Methods:  POST, GET, PUT, DELETE');
 
 require_once '../util/util.php';
 require_once '../model/plane.php';
