@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2017 at 11:00 AM
+-- Generation Time: Jan 02, 2017 at 05:27 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -39,8 +39,10 @@ CREATE TABLE `flight` (
 --
 
 INSERT INTO `flight` (`id`, `origin`, `dest`, `departure_at`, `plane_id`) VALUES
-(1, 'TLV', 'BANGKOK', '2017-01-01 16:07:58', 3),
-(2, 'AMS', 'ROM', '2017-01-02 09:57:38', 1);
+(1, 'TLV', 'BANGKOK', '2017-01-02 16:24:46', 1),
+(2, 'AMS', 'ROM', '2017-01-02 16:25:59', 3),
+(3, 'TLV', 'AMS', '2017-01-02 16:26:05', 2),
+(4, 'TLV', 'BANGKOK', '2017-01-02 16:23:12', 1);
 
 -- --------------------------------------------------------
 
@@ -103,9 +105,9 @@ CREATE TABLE `plane` (
 
 INSERT INTO `plane` (`id`, `model`, `seat_count`) VALUES
 (1, 'Boing 777', 250),
-(3, 'Airbus a320', 240),
-(4, 'Boing 747', 340),
-(10, 'Airbus 380', 256);
+(2, 'Airbus a320', 240),
+(3, 'Boing 747', 340),
+(4, 'Airbus 380', 256);
 
 --
 -- Indexes for dumped tables
@@ -146,7 +148,7 @@ ALTER TABLE `plane`
 -- AUTO_INCREMENT for table `flight`
 --
 ALTER TABLE `flight`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `flight_passenger`
 --
@@ -156,12 +158,12 @@ ALTER TABLE `flight_passenger`
 -- AUTO_INCREMENT for table `passenger`
 --
 ALTER TABLE `passenger`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `plane`
 --
 ALTER TABLE `plane`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- Constraints for dumped tables
 --
